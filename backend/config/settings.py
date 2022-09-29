@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'blog.apps.BlogConfig',
+    'api.apps.ApiConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -122,3 +125,32 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+    # isAuthenticated : show USERSall views in our rest exists ,
+    # when the USER is  authenticate
+        #'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+
+        # all views more secure ,ReadOnly. Staff allowed to change
+        'api.permissions.IsStaffOrReadOnly',
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
